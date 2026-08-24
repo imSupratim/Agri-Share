@@ -19,11 +19,52 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 6,
-    }
+    },
+
+    phone: {
+      type: String,
+      default: "",
+    },
+
+    profileImage: {
+      type: String,
+      default: "",
+    },
+
+    address: {
+      street: {
+        type: String,
+        trim: true,
+        default: "",
+      },
+      village: {
+        type: String,
+        trim: true,
+        default: "",
+      },
+
+      district: {
+        type: String,
+        trim: true,
+        default: "",
+      },
+
+      state: {
+        type: String,
+        trim: true,
+        default: "",
+      },
+
+      pincode: {
+        type: String,
+        trim: true,
+        default: "",
+      },
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export default mongoose.model("User", userSchema);

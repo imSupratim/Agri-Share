@@ -1,5 +1,12 @@
 import React from "react";
-import { DoorClosed, Tractor, LogOut, LogIn, UserPlus } from "lucide-react";
+import {
+  DoorClosed,
+  Tractor,
+  LogOut,
+  LogIn,
+  UserPlus,
+  User,
+} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api.js";
 import toast from "react-hot-toast";
@@ -29,11 +36,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div>
-          {user && (
-            <NavBarLinks route="/" name="Home" />
-          )}
-        </div>
+        <div>{user && <NavBarLinks route="/" name="Home" />}</div>
 
         <div>
           {!user ? (
@@ -42,21 +45,32 @@ const Navbar = () => {
                 to="/login"
                 className="bg-green-500 flex gap-1 items-center px-3 py-1 hover:rounded-2xl transition-all ease-in-out"
               >
-                 <LogIn className="size-5"/> Login
+                <LogIn className="size-5" /> Login
               </Link>
               <Link
                 to="/register"
                 className="bg-blue-500 flex gap-1 items-center px-3 py-1 hover:rounded-2xl transition-all ease-in-out"
               >
-                <UserPlus className="size-5"/> Register
+                <UserPlus className="size-5" /> Register
               </Link>
             </div>
           ) : (
-            <div
-              onClick={handleLogout}
-              className="bg-red-600  px-3 py-1 hover:rounded-2xl transition-all ease-in-out"
-            >
-              <button className="flex gap-1 hover:cursor-pointer items-center text-white"> <LogOut className="size-5"/> Logout</button>
+            <div className="flex gap-4 items-center">
+              <Link
+                to="/profile"
+                className="flex gap-1 hover:cursor-pointer items-center bg-blue-600  px-3 py-1 hover:rounded-2xl transition-all ease-in-out text-white"
+              >
+                {" "}
+                <User className="size-5" /> Profile
+              </Link>
+
+              <button
+                onClick={handleLogout}
+                className="flex gap-1 hover:cursor-pointer items-center bg-red-600  px-3 py-1 hover:rounded-2xl transition-all ease-in-out text-white"
+              >
+                {" "}
+                <LogOut className="size-5" /> Logout
+              </button>
             </div>
           )}
         </div>

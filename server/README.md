@@ -1,4 +1,4 @@
-# Agri Share API
+<!-- # Agri Share API
 
 ## Setup
 
@@ -38,4 +38,4 @@ Location data uses GeoJSON, so coordinates must be `[longitude, latitude]`.
 
 `pending → confirmed → active → completed`.
 
-Owners can confirm or reject pending requests; either party can cancel a pending or confirmed booking. The API rejects overlapping pending, confirmed, or active bookings for the same machine.
+Owners can confirm or reject pending requests; either party can cancel a pending or confirmed booking. The API rejects overlapping pending, confirmed, or active bookings for the same machine. -->
