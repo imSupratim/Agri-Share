@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { Tractor } from "lucide-react";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -50,10 +51,7 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
 
-      setError(
-        error.response?.data?.message ||
-          "Failed to load profile"
-      );
+      setError(error.response?.data?.message || "Failed to load profile");
     } finally {
       setLoading(false);
     }
@@ -115,10 +113,7 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
 
-      setError(
-        error.response?.data?.message ||
-          "Failed to update profile"
-      );
+      setError(error.response?.data?.message || "Failed to update profile");
     } finally {
       setSaving(false);
     }
@@ -169,18 +164,16 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4">
-      <div className="max-w-4xl mx-auto">
-
+    <div className="bg-linear-to-b from-green-50  to-yellow-200 py-10 px-4">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            My Profile
+          <h1 className="text-3xl font-bold flex gap-3 items-center text-gray-900">
+            <Tractor className="size-10 bg-green-500 rounded-full p-2" /> My
+            Profile
           </h1>
 
-          <p className="text-gray-500 mt-1">
-            Manage your personal information
-          </p>
+          <p className="text-gray-500 mt-1">Manage your personal information</p>
         </div>
 
         {/* Messages */}
@@ -197,35 +190,26 @@ const Profile = () => {
         )}
 
         <form onSubmit={handleSave}>
-
           {/* Profile Card */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-
             {/* Profile Header */}
             <div className="bg-green-700 px-6 py-8">
               <div className="flex items-center gap-5">
-
                 {/* Avatar */}
                 <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-green-700">
                   {profile?.name?.charAt(0)?.toUpperCase()}
                 </div>
 
                 <div className="text-white">
-                  <h2 className="text-2xl font-semibold">
-                    {profile?.name}
-                  </h2>
+                  <h2 className="text-2xl font-semibold">{profile?.name}</h2>
 
-                  <p className="text-green-100">
-                    {profile?.email}
-                  </p>
+                  <p className="text-green-100">{profile?.email}</p>
                 </div>
-
               </div>
             </div>
 
             {/* Personal Information */}
             <div className="p-6 md:p-8">
-
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-semibold text-gray-900">
                   Personal Information
@@ -243,7 +227,6 @@ const Profile = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
-
                 {/* Name */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -302,19 +285,16 @@ const Profile = () => {
                     </p>
                   )}
                 </div>
-
               </div>
             </div>
 
             {/* Address */}
             <div className="border-t border-gray-200 p-6 md:p-8">
-
               <h3 className="text-xl font-semibold text-gray-900 mb-6">
                 Address
               </h3>
 
               <div className="grid md:grid-cols-2 gap-6">
-
                 {/* Street */}
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -425,14 +405,12 @@ const Profile = () => {
                     </p>
                   )}
                 </div>
-
               </div>
             </div>
 
             {/* Buttons */}
             {isEditing && (
               <div className="border-t border-gray-200 px-6 md:px-8 py-5 flex justify-end gap-3">
-
                 <button
                   type="button"
                   onClick={handleCancel}
@@ -449,10 +427,8 @@ const Profile = () => {
                 >
                   {saving ? "Saving..." : "Save Changes"}
                 </button>
-
               </div>
             )}
-
           </div>
         </form>
       </div>

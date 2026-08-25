@@ -58,7 +58,7 @@ const Navbar = () => {
             <div className="flex gap-4 items-center">
               <Link
                 to="/profile"
-                className="flex gap-1 hover:cursor-pointer items-center bg-blue-600  px-3 py-1 hover:rounded-2xl transition-all ease-in-out text-white"
+                className="flex gap-1 hover:cursor-pointer hover:scale-105 hover:shadow-2xl active:scale-95 items-center bg-blue-600  px-3 py-1  rounded-2xl transition-all ease-in-out text-white"
               >
                 {" "}
                 <User className="size-5" /> Profile
@@ -66,7 +66,7 @@ const Navbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="flex gap-1 hover:cursor-pointer items-center bg-red-600  px-3 py-1 hover:rounded-2xl transition-all ease-in-out text-white"
+                className="flex gap-1 hover:cursor-pointer hover:scale-105 hover:shadow-2xl active:scale-95 items-center bg-red-600  px-3 py-1 rounded-2xl transition-all ease-in-out text-white"
               >
                 {" "}
                 <LogOut className="size-5" /> Logout
