@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api.js";
 import toast from "react-hot-toast";
 import NavBarLinks from "./NavBarLinks.jsx";
+import sappling from "../assets/sappling.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -29,22 +30,31 @@ const Navbar = () => {
     <div>
       <div className="bg-gray-300 flex justify-between items-center py-2 px-10">
         <div>
-          <div className="flex gap-2 items-center">
-            <div className="bg-green-400 rounded-full p-2">
-              <Tractor />
+          <Link
+            to="/"
+            className="flex gap-2 items-center hover:scale-105 active:scale-96 transition-all ease-in-out"
+          >
+            <div className="bg-green-400 rounded-full p-1">
+              <img
+                src={sappling}
+                alt="sappling"
+                className="size-9 rounded-full"
+              />
             </div>
             <h1 className="font-bold text-green-700">Agri-Share</h1>
-          </div>
+          </Link>
         </div>
 
-        <div>{user && (
-          <div className="flex gap-5">
-            <NavBarLinks route="/" name="Home" />
-            <NavBarLinks route="/equipment" name="Marketplace" />
-            <NavBarLinks route="/my-equipment" name="My Machinery" />
-            <NavBarLinks route="/add-equipment" name="Add Machinery" />
-          </div>
-        )}</div>
+        <div>
+          {user && (
+            <div className="flex gap-5">
+              <NavBarLinks route="/" name="Home" />
+              <NavBarLinks route="/equipment" name="Marketplace" />
+              <NavBarLinks route="/my-equipment" name="My Machinery" />
+              <NavBarLinks route="/add-equipment" name="Add Machinery" />
+            </div>
+          )}
+        </div>
 
         <div>
           {!user ? (

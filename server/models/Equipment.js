@@ -74,6 +74,12 @@ const equipmentSchema = new mongoose.Schema(
         default: "",
         trim: true,
       },
+
+      mapurl:{
+        type: String,
+        default: "",
+        trim: true
+      }
     },
 
     images: {

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
+import MapBox from "../../components/Map/MapBox";
 
 const EquipmentDetails = () => {
   const { id } = useParams();
@@ -21,10 +22,7 @@ const EquipmentDetails = () => {
       } catch (error) {
         console.error(error);
 
-        setError(
-          error.response?.data?.message ||
-            "Failed to load machinery"
-        );
+        setError(error.response?.data?.message || "Failed to load machinery");
       } finally {
         setLoading(false);
       }
@@ -36,9 +34,7 @@ const EquipmentDetails = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">
-          Loading machinery...
-        </p>
+        <p className="text-gray-500">Loading machinery...</p>
       </div>
     );
   }
@@ -47,9 +43,7 @@ const EquipmentDetails = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-500 mb-4">
-            {error}
-          </p>
+          <p className="text-red-500 mb-4">{error}</p>
 
           <button
             onClick={() => navigate(-1)}
@@ -66,9 +60,7 @@ const EquipmentDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10">
-
       <div className="max-w-6xl mx-auto">
-
         {/* Back */}
         <button
           onClick={() => navigate(-1)}
@@ -76,23 +68,16 @@ const EquipmentDetails = () => {
         >
           ← Back
         </button>
-
         <div className="bg-white rounded-2xl border overflow-hidden">
-
           <div className="grid lg:grid-cols-2">
-
             {/* Image */}
             <div className="min-h-[400px] bg-green-50 flex items-center justify-center">
-              <span className="text-9xl">
-                🚜
-              </span>
+              <span className="text-9xl">🚜</span>
             </div>
 
             {/* Information */}
             <div className="p-8">
-
               <div className="flex items-start justify-between gap-4">
-
                 <div>
                   <p className="text-sm text-green-600 font-medium">
                     {equipment.category}
@@ -104,70 +89,50 @@ const EquipmentDetails = () => {
 
                   <p className="text-gray-500 mt-2">
                     {equipment.brand || "Brand not provided"}
-                    {equipment.model &&
-                      ` • ${equipment.model}`}
+                    {equipment.model && ` • ${equipment.model}`}
                   </p>
                 </div>
 
                 <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
                   {equipment.status}
                 </span>
-
               </div>
 
               {/* Price */}
               <div className="mt-8 p-5 bg-green-50 rounded-xl">
-
-                <p className="text-sm text-gray-500">
-                  Rental Price
-                </p>
+                <p className="text-sm text-gray-500">Rental Price</p>
 
                 <div className="mt-1">
                   <span className="text-3xl font-bold text-green-700">
                     ₹{equipment.pricePerDay}
                   </span>
 
-                  <span className="text-gray-500">
-                    {" "} / day
-                  </span>
+                  <span className="text-gray-500"> / day</span>
                 </div>
 
                 {equipment.securityDeposit > 0 && (
                   <p className="text-sm text-gray-500 mt-2">
-                    Security deposit: ₹
-                    {equipment.securityDeposit}
+                    Security deposit: ₹{equipment.securityDeposit}
                   </p>
                 )}
-
               </div>
 
               {/* Description */}
               <div className="mt-8">
-
-                <h2 className="font-semibold text-lg">
-                  Description
-                </h2>
+                <h2 className="font-semibold text-lg">Description</h2>
 
                 <p className="text-gray-600 mt-2 leading-relaxed">
-                  {equipment.description ||
-                    "No description provided."}
+                  {equipment.description || "No description provided."}
                 </p>
-
               </div>
 
               {/* Location */}
               <div className="mt-8">
-
-                <h2 className="font-semibold text-lg">
-                  Location
-                </h2>
+                <h2 className="font-semibold text-lg">Location</h2>
 
                 <div className="mt-2 text-gray-600 space-y-1">
-
                   {equipment.location?.address && (
-                    <p>
-                      {equipment.location.address}
-                    </p>
+                    <p>{equipment.location.address}</p>
                   )}
 
                   <p>
@@ -176,42 +141,28 @@ const EquipmentDetails = () => {
                       `, ${equipment.location.district}`}
                   </p>
 
-                  <p>
-                    {equipment.location?.state}
-                  </p>
-
+                  <p>{equipment.location?.state}</p>
                 </div>
-
               </div>
 
               {/* Owner */}
               {equipment.owner && (
                 <div className="mt-8 pt-6 border-t">
-
-                  <h2 className="font-semibold text-lg">
-                    Machinery Owner
-                  </h2>
+                  <h2 className="font-semibold text-lg">Machinery Owner</h2>
 
                   <div className="flex items-center gap-4 mt-4">
-
                     <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold">
-                      {equipment.owner.name
-                        ?.charAt(0)
-                        ?.toUpperCase()}
+                      {equipment.owner.name?.charAt(0)?.toUpperCase()}
                     </div>
 
                     <div>
-                      <p className="font-medium">
-                        {equipment.owner.name}
-                      </p>
+                      <p className="font-medium">{equipment.owner.name}</p>
 
                       <p className="text-sm text-gray-500">
                         {equipment.owner.email}
                       </p>
                     </div>
-
                   </div>
-
                 </div>
               )}
 
@@ -222,13 +173,34 @@ const EquipmentDetails = () => {
               >
                 Rental Booking — Coming Soon
               </button>
-
             </div>
-
           </div>
-
         </div>
 
+        {/* map feature */}
+        <div className="px-10 py-5 border-1 mt-5 rounded-2xl">
+          <div className="flex justify-between items-center px-6">
+            <p className="text-green-600 text-2xl font-bold">
+              Map Location
+            </p>
+            <button
+            type="button"
+            onClick={() => {
+              window.open(
+                equipment.location?.mapurl,
+                "_blank",
+                "noopener,noreferrer",
+              );
+            }}
+            className="text-blue-600 hover:underline hover:cursor-pointer"
+          >
+            📍View on Google Maps
+          </button>
+          </div>
+          <div className="mt-3 px-5 py-2">
+            <MapBox mapurl={equipment.location?.mapurl} name={equipment.name}/>
+          </div>
+        </div>
       </div>
     </div>
   );

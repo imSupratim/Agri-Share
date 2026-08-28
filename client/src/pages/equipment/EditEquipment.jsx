@@ -52,13 +52,11 @@ const EditEquipment = () => {
             village: item.location?.village || "",
             district: item.location?.district || "",
             state: item.location?.state || "",
+            mapurl: item.location?.mapurl || "",
           },
         });
       } catch (error) {
-        setError(
-          error.response?.data?.message ||
-            "Failed to load machinery"
-        );
+        setError(error.response?.data?.message || "Failed to load machinery");
       } finally {
         setLoading(false);
       }
@@ -98,16 +96,12 @@ const EditEquipment = () => {
       await api.patch(`/equipment/${id}`, {
         ...formData,
         pricePerDay: Number(formData.pricePerDay),
-        securityDeposit:
-          Number(formData.securityDeposit) || 0,
+        securityDeposit: Number(formData.securityDeposit) || 0,
       });
 
       navigate("/my-equipment");
     } catch (error) {
-      setError(
-        error.response?.data?.message ||
-          "Failed to update machinery"
-      );
+      setError(error.response?.data?.message || "Failed to update machinery");
     } finally {
       setSaving(false);
     }
@@ -123,17 +117,11 @@ const EditEquipment = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10">
-
       <div className="max-w-3xl mx-auto">
-
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">
-            Edit Machinery
-          </h1>
+          <h1 className="text-3xl font-bold">Edit Machinery</h1>
 
-          <p className="text-gray-500 mt-1">
-            Update your machinery listing.
-          </p>
+          <p className="text-gray-500 mt-1">Update your machinery listing.</p>
         </div>
 
         {error && (
@@ -142,15 +130,9 @@ const EditEquipment = () => {
           </div>
         )}
 
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white border rounded-2xl"
-        >
-
+        <form onSubmit={handleSubmit} className="bg-white border rounded-2xl">
           <div className="p-6 md:p-8">
-
             <div className="grid md:grid-cols-2 gap-6">
-
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2">
                   Machinery Name
@@ -191,9 +173,7 @@ const EditEquipment = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Brand
-                </label>
+                <label className="block text-sm font-medium mb-2">Brand</label>
 
                 <input
                   type="text"
@@ -205,9 +185,7 @@ const EditEquipment = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Model
-                </label>
+                <label className="block text-sm font-medium mb-2">Model</label>
 
                 <input
                   type="text"
@@ -250,9 +228,7 @@ const EditEquipment = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Status
-                </label>
+                <label className="block text-sm font-medium mb-2">Status</label>
 
                 <select
                   name="status"
@@ -260,13 +236,9 @@ const EditEquipment = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 border rounded-lg bg-white outline-none focus:ring-2 focus:ring-green-500"
                 >
-                  <option value="available">
-                    Available
-                  </option>
+                  <option value="available">Available</option>
 
-                  <option value="unavailable">
-                    Unavailable
-                  </option>
+                  <option value="unavailable">Unavailable</option>
                 </select>
               </div>
 
@@ -283,19 +255,14 @@ const EditEquipment = () => {
                   className="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-green-500 resize-none"
                 />
               </div>
-
             </div>
           </div>
 
           {/* Location */}
           <div className="border-t p-6 md:p-8">
-
-            <h2 className="text-xl font-semibold mb-6">
-              Location
-            </h2>
+            <h2 className="text-xl font-semibold mb-6">Location</h2>
 
             <div className="grid md:grid-cols-2 gap-6">
-
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2">
                   Address
@@ -339,9 +306,7 @@ const EditEquipment = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  State
-                </label>
+                <label className="block text-sm font-medium mb-2">State</label>
 
                 <input
                   type="text"
@@ -352,13 +317,22 @@ const EditEquipment = () => {
                 />
               </div>
 
-            </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Map Location</label>
 
+                <input
+                  type="text"
+                  name="mapurl"
+                  value={formData.location.mapurl}
+                  onChange={handleLocationChange}
+                  className="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Buttons */}
           <div className="border-t p-6 md:p-8 flex justify-end gap-3">
-
             <button
               type="button"
               onClick={() => navigate("/my-equipment")}
@@ -372,15 +346,10 @@ const EditEquipment = () => {
               disabled={saving}
               className="px-7 py-3 bg-green-600 text-white rounded-lg disabled:opacity-50"
             >
-              {saving
-                ? "Saving..."
-                : "Save Changes"}
+              {saving ? "Saving..." : "Save Changes"}
             </button>
-
           </div>
-
         </form>
-
       </div>
     </div>
   );

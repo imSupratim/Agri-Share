@@ -20,6 +20,7 @@ const AddEquipment = () => {
       village: "",
       district: "",
       state: "",
+      mapurl: "",
     },
   });
 
@@ -294,6 +295,7 @@ const AddEquipment = () => {
                 <input
                   type="text"
                   name="address"
+                  required
                   value={formData.location.address}
                   onChange={handleLocationChange}
                   placeholder="Street / local address"
@@ -309,6 +311,7 @@ const AddEquipment = () => {
                 <input
                   type="text"
                   name="village"
+                  required
                   value={formData.location.village}
                   onChange={handleLocationChange}
                   placeholder="Village"
@@ -324,6 +327,7 @@ const AddEquipment = () => {
                 <input
                   type="text"
                   name="district"
+                  required
                   value={formData.location.district}
                   onChange={handleLocationChange}
                   placeholder="District"
@@ -339,9 +343,26 @@ const AddEquipment = () => {
                 <input
                   type="text"
                   name="state"
+                  required
                   value={formData.location.state}
                   onChange={handleLocationChange}
                   placeholder="State"
+                  className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                />
+              </div>
+
+               <div>
+                <label className="block text-sm font-medium mb-2">
+                  Map Location
+                </label>
+
+                <input
+                  type="text"
+                  name="mapurl"
+                  required
+                  value={formData.location.mapurl}
+                  onChange={handleLocationChange}
+                  placeholder="Paste google maps url "
                   className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
                 />
               </div>
