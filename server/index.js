@@ -5,6 +5,7 @@ import { connectDB } from "./config/db.js";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth-routes.js";
 import profileRoutes from "./routes/profile-routes.js";
+import equipmentRoutes from "./routes/equipment-routes.js";
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ app.use(
 app.get("/", (req, res) => res.json({ message: "Agri Share API is running" }));
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/equipment", equipmentRoutes);
 
 connectDB();
 

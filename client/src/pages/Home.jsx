@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -99,6 +100,22 @@ const Home = () => {
                     <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
                       {slide.description}
                     </p>
+
+                    <div className="mt-10 flex gap-6">
+                      <Link
+                        to="/add-equipment"
+                        className="rounded-lg bg-green-600 px-6 py-3 font-medium transition hover:bg-white/10 hover:text-white"
+                      >
+                        List your machine
+                      </Link>
+
+                      <Link
+                        to="/equipment"
+                        className="rounded-lg border border-black text-black bg-white hover:text-white px-6 py-3 font-medium backdrop-blur-sm transition hover:bg-white/10"
+                      >
+                        Find equipment
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -135,16 +152,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="flex gap-5 justify-center py-6 bg-white">
-          <button className="rounded-lg bg-indigo-600 px-6 py-3 font-medium transition hover:bg-indigo-500">
-            List your machine
-          </button>
-
-          <button className="rounded-lg border border-black text-black bg-white/5 px-6 py-3 font-medium backdrop-blur-sm transition hover:bg-black/20">
-            Find equipment
-          </button>
-        </section>
-
+        
         {/* ================= FEATURE CARDS ================= */}
         <section className="mx-auto max-w-7xl px-6 py-24">
           <div className="mx-auto mb-12 max-w-2xl text-center">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   DoorClosed,
   Tractor,
@@ -6,6 +6,7 @@ import {
   LogIn,
   UserPlus,
   User,
+  Divide,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api.js";
@@ -36,7 +37,14 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div>{user && <NavBarLinks route="/" name="Home" />}</div>
+        <div>{user && (
+          <div className="flex gap-5">
+            <NavBarLinks route="/" name="Home" />
+            <NavBarLinks route="/equipment" name="Marketplace" />
+            <NavBarLinks route="/my-equipment" name="My Machinery" />
+            <NavBarLinks route="/add-equipment" name="Add Machinery" />
+          </div>
+        )}</div>
 
         <div>
           {!user ? (

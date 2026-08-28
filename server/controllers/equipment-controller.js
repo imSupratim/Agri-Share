@@ -61,6 +61,7 @@ export const getAllEquipment = async (req, res, next) => {
 };
 
 export const getMyEquipment = async (req, res, next) => {
+
   try {
     const equipment = await Equipment.find({
       owner: req.user._id,
