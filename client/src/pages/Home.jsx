@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { Link } from "react-router-dom";
+import Testimonials from "../components/Testimonials/Testimonials";
 
 const slides = [
   {
@@ -224,6 +225,10 @@ const Home = () => {
             <button className="mt-8 rounded-lg bg-white px-7 py-3 font-semibold text-slate-900 transition hover:bg-slate-200">
               Get Started
             </button>
+          </div>
+
+          <div>
+            <Testimonials />
           </div>
         </section>
       </main>
