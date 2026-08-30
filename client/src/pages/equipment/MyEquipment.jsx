@@ -4,6 +4,7 @@ import { useEffect, useReducer, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 import gsap from "gsap";
+import Heading from "../../components/Heading/Heading";
 
 const MyEquipment = () => {
   const [equipment, setEquipment] = useState([]);
@@ -69,10 +70,10 @@ const MyEquipment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
+    <div className="min-h-screen bg-linear-to-b from-green-50  to-yellow-200 px-4 py-10">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        {/* <div ref={headerRef} className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">My Machinery</h1>
 
@@ -87,6 +88,10 @@ const MyEquipment = () => {
           >
             + Add Machinery
           </Link>
+        </div> */}
+
+        <div>
+          <Heading highlight="My" heading="Machinery"/>
         </div>
 
         {loading && (

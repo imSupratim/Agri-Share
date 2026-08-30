@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import Heading from "../../components/Heading/Heading";
 
 const AddEquipment = () => {
   const navigate = useNavigate();
@@ -78,18 +79,20 @@ const AddEquipment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
+    <div className="min-h-screen px-4 py-10 bg-linear-to-b from-green-50  to-yellow-200">
 
       <div className="max-w-3xl mx-auto">
 
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+          {/* <h1 className="text-3xl font-bold text-gray-900">
             List Your Machinery
-          </h1>
+          </h1> */}
 
-          <p className="text-gray-500 mt-1">
+          <Heading highlight="List Your" heading="Machinery"/>
+
+          {/* <p className="text-gray-500 mt-1">
             Rent out your agricultural machinery to nearby farmers.
-          </p>
+          </p> */}
         </div>
 
         {error && (
@@ -164,6 +167,10 @@ const AddEquipment = () => {
 
                   <option value="Seeder">
                     Seeder
+                  </option>
+
+                  <option value="Tiller">
+                    Tiller
                   </option>
 
                   <option value="Thresher">

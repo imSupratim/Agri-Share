@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import api from "../../services/api";
 import EquipmentCard from "../../components/EquipmentCard";
 import { gsap } from "gsap";
+import Heading from "../../components/Heading/Heading";
 
 const EquipmentList = () => {
   const [equipment, setEquipment] = useState([]);
@@ -52,18 +53,12 @@ const EquipmentList = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
+    <div className="min-h-screen bg-linear-to-b from-green-50  to-yellow-200 px-4 py-10">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        {/* <div ref={headerRef} className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
-              Agricultural Machinery
-            </h1>
-
-            <p className="text-gray-500 mt-1">
-              Find machinery available for rent near you.
-            </p>
+            <Heading highlight="Find" heading="Machinery"/>
           </div>
 
           <Link
@@ -72,8 +67,11 @@ const EquipmentList = () => {
           >
             + List Your Machinery
           </Link>
-        </div>
+        </div> */}
 
+        <div  className="mb-3">
+          <Heading highlight="Find" heading="Machinery" />
+        </div>
         {/* Loading */}
         {loading && (
           <div className="text-center py-20 text-gray-500">

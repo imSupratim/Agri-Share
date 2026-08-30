@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { Tractor } from "lucide-react";
+import Heading from "../components/Heading/Heading";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -167,13 +168,16 @@ const Profile = () => {
     <div className="bg-linear-to-b from-green-50  to-yellow-200 py-10 px-4">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <h1 className="text-3xl font-bold flex gap-3 items-center text-gray-900">
             <Tractor className="size-10 bg-green-500 rounded-full p-2" /> My
             Profile
           </h1>
 
           <p className="text-gray-500 mt-1">Manage your personal information</p>
+        </div> */}
+        <div>
+          <Heading highlight="My" heading="Profile"/>
         </div>
 
         {/* Messages */}
