@@ -1,6 +1,7 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import loading from "../assets/logo.jpg"
 
 const MapTest = () => {
   const position = [22.6241504, 88.4306945]; // Kolkata
@@ -23,6 +24,13 @@ const MapTest = () => {
           <Popup>Hello from Kolkata! 📍</Popup>
         </Marker>
       </MapContainer>
+
+
+      <div className="px-89 py-30 "> 
+        <div className="size-20 border-4 flex justify-center items-center animate-pulse">
+          <div className="size-10 rounded-full border-b-4 animate-spin"></div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import MapBox from "../../components/Map/MapBox";
+import BookingForm from "../../components/Booking/Bookingform";
+import Loading from "../../components/Loading/Loading";
 
 const EquipmentDetails = () => {
   const { id } = useParams();
@@ -12,6 +14,7 @@ const EquipmentDetails = () => {
   const [equipment, setEquipment] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showBookingForm, setShowBookingForm] = useState(false);
 
   useEffect(() => {
     const fetchEquipment = async () => {
@@ -33,9 +36,7 @@ const EquipmentDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Loading machinery...</p>
-      </div>
+      <Loading pageName="machinery"/>
     );
   }
 
@@ -59,7 +60,7 @@ const EquipmentDetails = () => {
   if (!equipment) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
+    <div className="min-h-screen bg-linear-to-b from-green-50  to-yellow-200 px-4 py-10">
       <div className="max-w-6xl mx-auto">
         {/* Back */}
         <button
@@ -166,13 +167,29 @@ const EquipmentDetails = () => {
                 </div>
               )}
 
-              {/* Future rental button */}
-              <button
-                disabled
-                className="w-full mt-8 py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed"
-              >
-                Rental Booking — Coming Soon
-              </button>
+              {equipment.status === "available" ? (
+                <button
+                  type="button"
+                  onClick={() => setShowBookingForm(true)}
+                  className="w-full mt-8 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition"
+                >
+                  Rent Now
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="w-full mt-8 py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed"
+                >
+                  Currently Unavailable
+                </button>
+              )}
+              {showBookingForm && (
+                <BookingForm
+                  equipment={equipment}
+                  onClose={() => setShowBookingForm(false)}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -180,25 +197,23 @@ const EquipmentDetails = () => {
         {/* map feature */}
         <div className="px-10 py-5 border-1 mt-5 rounded-2xl">
           <div className="flex justify-between items-center px-6">
-            <p className="text-green-600 text-2xl font-bold">
-              Map Location
-            </p>
+            <p className="text-green-600 text-2xl font-bold">Map Location</p>
             <button
-            type="button"
-            onClick={() => {
-              window.open(
-                equipment.location?.mapurl,
-                "_blank",
-                "noopener,noreferrer",
-              );
-            }}
-            className="text-blue-600 hover:underline hover:cursor-pointer"
-          >
-            📍View on Google Maps
-          </button>
+              type="button"
+              onClick={() => {
+                window.open(
+                  equipment.location?.mapurl,
+                  "_blank",
+                  "noopener,noreferrer",
+                );
+              }}
+              className="text-blue-600 hover:underline hover:cursor-pointer"
+            >
+              📍View on Google Maps
+            </button>
           </div>
           <div className="mt-3 px-5 py-2">
-            <MapBox mapurl={equipment.location?.mapurl} name={equipment.name}/>
+            <MapBox mapurl={equipment.location?.mapurl} name={equipment.name} />
           </div>
         </div>
       </div>

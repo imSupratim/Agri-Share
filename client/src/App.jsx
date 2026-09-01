@@ -12,7 +12,10 @@ import AddEquipment from "./pages/equipment/AddEquipment";
 import MyEquipment from "./pages/equipment/MyEquipment";
 import EquipmentDetails from "./pages/equipment/EquipmentDetails";
 import EditEquipment from "./pages/equipment/EditEquipment";
+import MyBookings from "./pages/bookings/MyBookings";
 import MapTest from "./pages/MapTest";
+import OwnerBookings from "./pages/bookings/OwnerBookings";
+
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
         <Route path="/add-equipment" element={<AddEquipment />} />
         <Route path="/equipment/:id" element={<EquipmentDetails />} />
         <Route path="/equipment/:id/edit" element={<EditEquipment />} />
+
+        <Route path="my-bookings" element={<MyBookings/>} />
+        <Route path="rental-requests" element={<OwnerBookings/>} />
 
 
         <Route path="/test/map" element={<MapTest/>}/>

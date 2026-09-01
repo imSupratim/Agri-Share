@@ -5,6 +5,7 @@ const NavBarLinks = (props) => {
   return (
     <NavLink
       to={props.route}
+      onClick={props.onClick}
       className={({ isActive }) =>
         `
     flex  items-center  border-gray-500 rounded-sm hover:scale-105 active:scale-95 transition-all ease-in-out py-1 px-2 
