@@ -7,7 +7,7 @@ const MapTest = () => {
   const position = [22.6241504, 88.4306945]; // Kolkata
 
   return (
-    <div>
+    <div className="animate-bounce">
       <h2>My Map</h2>
 
       <MapContainer

@@ -59,8 +59,7 @@ const AddEquipment = () => {
       const response = await api.post("/equipment", {
         ...formData,
         pricePerDay: Number(formData.pricePerDay),
-        securityDeposit:
-          Number(formData.securityDeposit) || 0,
+        securityDeposit: Number(formData.securityDeposit) || 0,
       });
 
       if (response.data.success) {
@@ -69,10 +68,7 @@ const AddEquipment = () => {
     } catch (error) {
       console.error(error);
 
-      setError(
-        error.response?.data?.message ||
-          "Failed to add machinery"
-      );
+      setError(error.response?.data?.message || "Failed to add machinery");
     } finally {
       setLoading(false);
     }
@@ -80,15 +76,13 @@ const AddEquipment = () => {
 
   return (
     <div className="min-h-screen px-4 py-10 bg-linear-to-b from-green-50  to-yellow-200">
-
       <div className="max-w-3xl mx-auto">
-
         <div className="mb-8">
           {/* <h1 className="text-3xl font-bold text-gray-900">
             List Your Machinery
           </h1> */}
 
-          <Heading highlight="List Your" heading="Machinery"/>
+          <Heading highlight="List Your" heading="Machinery" />
 
           {/* <p className="text-gray-500 mt-1">
             Rent out your agricultural machinery to nearby farmers.
@@ -105,16 +99,13 @@ const AddEquipment = () => {
           onSubmit={handleSubmit}
           className="bg-white rounded-2xl border border-gray-200 shadow-sm"
         >
-
           {/* Basic Information */}
           <div className="p-6 md:p-8">
-
             <h2 className="text-xl font-semibold mb-6">
               Machinery Information
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
-
               {/* Name */}
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2">
@@ -145,53 +136,33 @@ const AddEquipment = () => {
                   required
                   className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none bg-white"
                 >
-                  <option value="">
-                    Select category
-                  </option>
+                  <option value="">Select category</option>
 
-                  <option value="Tractor">
-                    Tractor
-                  </option>
+                  <option value="Tractor">Tractor</option>
 
-                  <option value="Harvester">
-                    Harvester
-                  </option>
+                  <option value="Harvester">Harvester</option>
 
-                  <option value="Rotavator">
-                    Rotavator
-                  </option>
+                  <option value="Rotavator">Rotavator</option>
 
-                  <option value="Cultivator">
-                    Cultivator
-                  </option>
+                  <option value="Cultivator">Cultivator</option>
 
-                  <option value="Seeder">
-                    Seeder
-                  </option>
+                  <option value="Seeder">Seeder</option>
 
-                  <option value="Tiller">
-                    Tiller
-                  </option>
+                  <option value="Tiller">Tiller</option>
 
-                  <option value="Thresher">
-                    Thresher
-                  </option>
+                  <option value="Thresher">Thresher</option>
 
-                  <option value="Sprayer">
-                    Sprayer
-                  </option>
+                  <option value="Sprayer">Sprayer</option>
 
-                  <option value="Other">
-                    Other
-                  </option>
+                  <option value="Pump">Pump</option>
+
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
               {/* Brand */}
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Brand
-                </label>
+                <label className="block text-sm font-medium mb-2">Brand</label>
 
                 <input
                   type="text"
@@ -205,9 +176,7 @@ const AddEquipment = () => {
 
               {/* Model */}
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Model
-                </label>
+                <label className="block text-sm font-medium mb-2">Model</label>
 
                 <input
                   type="text"
@@ -226,9 +195,7 @@ const AddEquipment = () => {
                 </label>
 
                 <div className="relative">
-                  <span className="absolute left-4 top-3 text-gray-500">
-                    ₹
-                  </span>
+                  <span className="absolute left-4 top-3 text-gray-500">₹</span>
 
                   <input
                     type="number"
@@ -250,9 +217,7 @@ const AddEquipment = () => {
                 </label>
 
                 <div className="relative">
-                  <span className="absolute left-4 top-3 text-gray-500">
-                    ₹
-                  </span>
+                  <span className="absolute left-4 top-3 text-gray-500">₹</span>
 
                   <input
                     type="number"
@@ -281,19 +246,14 @@ const AddEquipment = () => {
                   className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none resize-none"
                 />
               </div>
-
             </div>
           </div>
 
           {/* Location */}
           <div className="border-t p-6 md:p-8">
-
-            <h2 className="text-xl font-semibold mb-6">
-              Machinery Location
-            </h2>
+            <h2 className="text-xl font-semibold mb-6">Machinery Location</h2>
 
             <div className="grid md:grid-cols-2 gap-6">
-
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2">
                   Address
@@ -343,9 +303,7 @@ const AddEquipment = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  State
-                </label>
+                <label className="block text-sm font-medium mb-2">State</label>
 
                 <input
                   type="text"
@@ -358,7 +316,7 @@ const AddEquipment = () => {
                 />
               </div>
 
-               <div>
+              <div>
                 <label className="block text-sm font-medium mb-2">
                   Map Location
                 </label>
@@ -373,13 +331,11 @@ const AddEquipment = () => {
                   className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
                 />
               </div>
-
             </div>
           </div>
 
           {/* Submit */}
           <div className="border-t p-6 md:p-8 flex justify-end gap-3">
-
             <button
               type="button"
               onClick={() => navigate(-1)}
@@ -393,15 +349,10 @@ const AddEquipment = () => {
               disabled={loading}
               className="px-7 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg disabled:opacity-50"
             >
-              {loading
-                ? "Adding..."
-                : "List Machinery"}
+              {loading ? "Adding..." : "List Machinery"}
             </button>
-
           </div>
-
         </form>
-
       </div>
     </div>
   );
