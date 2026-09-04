@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
@@ -16,17 +15,22 @@ const EquipmentCard = ({ equipment, ownerView = false }) => {
   }, []);
 
   return (
-    <div
-      className="bg-white border h-120 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col"
-    >
+    <div className="bg-white border h-120 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
       {/* Image */}
-      <div className="h-48 bg-green-50 flex items-center justify-center shrink-0">
-        <span className="text-6xl">🚜</span>
+      <div className="h-48 bg-green-50 flex items-center justify-center shrink-0 p-2">
+        {equipment.images.length > 0 ? (
+          <img
+            src={equipment.images[0]}
+            alt={equipment.name}
+            className="w-full h-full object-contain rounded-2xl"
+          />
+        ) : (
+          <span className="text-6xl">🚜</span>
+        )}
       </div>
 
       {/* Content */}
       <div className="p-5 flex flex-col flex-1">
-
         {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -51,9 +55,7 @@ const EquipmentCard = ({ equipment, ownerView = false }) => {
             ₹{equipment.pricePerDay}
           </span>
 
-          <span className="text-sm text-gray-500">
-            {" "} / day
-          </span>
+          <span className="text-sm text-gray-500"> / day</span>
         </div>
 
         {/* Location */}
@@ -75,7 +77,6 @@ const EquipmentCard = ({ equipment, ownerView = false }) => {
         >
           View Details
         </Link>
-
       </div>
     </div>
   );

@@ -27,6 +27,8 @@ const AddEquipment = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [images, setImages] = useState([]);
+  const [uploading, setUploading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +62,7 @@ const AddEquipment = () => {
         ...formData,
         pricePerDay: Number(formData.pricePerDay),
         securityDeposit: Number(formData.securityDeposit) || 0,
+        images: images.map((image) => image.url),
       });
 
       if (response.data.success) {
@@ -71,6 +74,56 @@ const AddEquipment = () => {
       setError(error.response?.data?.message || "Failed to add machinery");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleFileUpload = async (e) => {
+    const files = Array.from(e.target.files);
+
+    if (!files.length) return;
+
+    try {
+      setLoading(true);
+      setUploading(true);
+
+      const uploadedImages = await Promise.all(
+        files.map(async (file) => {
+          const data = new FormData();
+
+          data.append("file", file);
+          data.append("upload_preset", "local_problem_app");
+
+          const response = await fetch(
+            "https://api.cloudinary.com/v1_1/dtmp431dj/image/upload",
+            {
+              method: "POST",
+              body: data,
+            },
+          );
+
+          if (!response.ok) {
+            throw new Error(`Failed to upload ${file.name}`);
+          }
+
+          const result = await response.json();
+
+          return {
+            url: result.secure_url,
+            publicId: result.public_id,
+          };
+        }),
+      );
+
+      setImages(uploadedImages);
+      console.log(images);
+
+      console.log("Uploaded images:", uploadedImages);
+    } catch (error) {
+      console.error("Upload error:", error);
+      setError("Failed to upload images");
+    } finally {
+      setLoading(false);
+      setUploading(false);
     }
   };
 
@@ -246,6 +299,57 @@ const AddEquipment = () => {
                   className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none resize-none"
                 />
               </div>
+            </div>
+            {/* Image upload */}
+            <div className="mt-8">
+              <label className="block text-sm font-medium mb-2">
+                Upload images
+              </label>
+
+              <input
+                type="file"
+                id="fileUpload"
+                className="hidden"
+                multiple
+                accept="image/png,image/jpeg,image/jpg"
+                onChange={handleFileUpload}
+                required
+              />
+
+              <label
+                htmlFor="fileUpload"
+                className="flex flex-col items-center justify-center h-36 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition"
+              >
+                <span className="text-4xl mb-2">📸</span>
+
+                <span className="text-gray-600 text-sm">
+                  Click to upload image
+                </span>
+
+                <span className="text-xs text-gray-400 mt-1">
+                  JPG, PNG supported
+                </span>
+              </label>
+
+              {uploading && (
+                <div className="flex gap-2 p-10 justify-center items-center">
+                  <div className="size-10 rounded-full border-b-4 border-green-400 animate-spin"></div>
+                  <span>Uploading images</span>
+                </div>
+              )}
+
+              {images.length > 0 && (
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                  {images.map((image) => (
+                    <img
+                      key={image.publicId}
+                      src={image.url}
+                      alt="Machinery"
+                      className="w-full h-40 object-cover rounded-xl shadow"
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 

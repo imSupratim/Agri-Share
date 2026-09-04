@@ -91,7 +91,7 @@ const MyEquipment = () => {
         </div> */}
 
         <div>
-          <Heading highlight="My" heading="Machinery"/>
+          <Heading highlight="My" heading="Machinery" />
         </div>
 
         {loading && (
@@ -138,14 +138,21 @@ const MyEquipment = () => {
           <div className="space-y-4">
             {equipment.map((item) => (
               <div
-            
                 key={item._id}
                 className="bg-white border border-gray-200 rounded-2xl p-5"
               >
-                <div  className="flex flex-col md:flex-row md:items-center gap-5">
+                <div className="flex flex-col md:flex-row md:items-center gap-5">
                   {/* Icon */}
                   <div className="w-24 h-24 rounded-xl bg-green-50 flex items-center justify-center text-4xl shrink-0">
-                    🚜
+                    {item.images.length > 0 ? (
+                      <img
+                        src={item.images[0]}
+                        alt={item.name}
+                        className="w-full h-full"
+                      />
+                    ) : (
+                      <span>🚜</span>
+                    )}
                   </div>
 
                   {/* Info */}

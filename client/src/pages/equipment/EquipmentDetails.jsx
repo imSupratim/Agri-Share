@@ -15,13 +15,17 @@ const EquipmentDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showBookingForm, setShowBookingForm] = useState(false);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchEquipment = async () => {
       try {
         const response = await api.get(`/equipment/${id}`);
 
-        setEquipment(response.data.equipment);
+        const equipmentData = response.data.equipment;
+
+        setEquipment(equipmentData);
+        setImages(equipmentData.images || []);
       } catch (error) {
         console.error(error);
 
@@ -35,9 +39,7 @@ const EquipmentDetails = () => {
   }, [id]);
 
   if (loading) {
-    return (
-      <Loading pageName="machinery"/>
-    );
+    return <Loading pageName="machinery" />;
   }
 
   if (error) {
@@ -72,8 +74,23 @@ const EquipmentDetails = () => {
         <div className="bg-white rounded-2xl border overflow-hidden">
           <div className="grid lg:grid-cols-2">
             {/* Image */}
-            <div className="min-h-[400px] bg-green-50 flex items-center justify-center">
-              <span className="text-9xl">🚜</span>
+            <div className="bg-green-50 p-4">
+              {images.length > 0 ? (
+                <div className="grid grid-cols-2 gap-4">
+                  {images.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={`${equipment.name} ${index + 1}`}
+                      className="w-full h-64 object-cover rounded-xl"
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="min-h-[400px] flex items-center justify-center">
+                  <span className="text-9xl">🚜</span>
+                </div>
+              )}
             </div>
 
             {/* Information */}
