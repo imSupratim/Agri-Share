@@ -90,7 +90,7 @@ const MyEquipment = () => {
           </Link>
         </div> */}
 
-        <div>
+        <div ref={headerRef}>
           <Heading highlight="My" heading="Machinery" />
         </div>
 

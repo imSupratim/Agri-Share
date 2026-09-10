@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -32,8 +30,8 @@ function App() {
         <Route path="/equipment/:id" element={<EquipmentDetails />} />
         <Route path="/equipment/:id/edit" element={<EditEquipment />} />
 
-        <Route path="my-bookings" element={<MyBookings/>} />
-        <Route path="rental-requests" element={<OwnerBookings/>} />
+        <Route path="/my-bookings" element={<MyBookings/>} />
+        <Route path="/rental-requests" element={<OwnerBookings/>} />
 
 
         <Route path="/test/map" element={<MapTest/>}/>

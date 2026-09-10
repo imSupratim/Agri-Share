@@ -1,12 +1,14 @@
 // POST /api/equipment
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import Heading from "../../components/Heading/Heading";
+import gsap from "gsap";
 
 const AddEquipment = () => {
   const navigate = useNavigate();
+  const headerRef = useRef();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,6 +26,15 @@ const AddEquipment = () => {
       mapurl: "",
     },
   });
+
+  useEffect(() => {
+    gsap.from(headerRef.current, {
+      y: -50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+  }, []);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -130,7 +141,7 @@ const AddEquipment = () => {
   return (
     <div className="min-h-screen px-4 py-10 bg-linear-to-b from-green-50  to-yellow-200">
       <div className="max-w-3xl mx-auto">
-        <div className="mb-8">
+        <div ref={headerRef} className="mb-8">
           {/* <h1 className="text-3xl font-bold text-gray-900">
             List Your Machinery
           </h1> */}
