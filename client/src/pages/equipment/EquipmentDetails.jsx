@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import MapBox from "../../components/Map/MapBox";
-import BookingForm from "../../components/Booking/Bookingform.jsx";
+import BookingForm from "../../components/Booking/BookingForm.jsx";
 import Loading from "../../components/Loading/Loading.jsx";
 
 const EquipmentDetails = () => {
