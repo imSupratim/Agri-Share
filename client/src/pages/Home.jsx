@@ -155,7 +155,7 @@ const Home = () => {
 
         
         {/* ================= FEATURE CARDS ================= */}
-        <section className="mx-auto max-w-7xl px-6 py-24">
+        {/* <section className="mx-auto max-w-7xl px-6 py-24">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
               Why choose us
@@ -208,11 +208,11 @@ const Home = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* ================= CTA ================= */}
         <section className="px-6 pb-24">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 px-6 py-16 text-center">
+          {/* <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 px-6 py-16 text-center">
             <h2 className="text-4xl font-bold">
               Ready to build something great?
             </h2>
@@ -225,7 +225,7 @@ const Home = () => {
             <button className="mt-8 rounded-lg bg-white px-7 py-3 font-semibold text-slate-900 transition hover:bg-slate-200">
               Get Started
             </button>
-          </div>
+          </div> */}
 
           <div>
             <Testimonials />
